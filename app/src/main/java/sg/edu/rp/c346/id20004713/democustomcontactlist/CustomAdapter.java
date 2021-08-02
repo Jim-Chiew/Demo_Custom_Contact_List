@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,6 +39,7 @@ public class CustomAdapter extends ArrayAdapter {
         TextView tvName = rowView.findViewById(R.id.tvName);
         TextView tvCountryCode = rowView.findViewById(R.id.tvCountryCode);
         TextView tvPhoneNum = rowView.findViewById(R.id.tvPhoneNum);
+        ImageView imageView = rowView.findViewById(R.id.iv);
 
         // Obtain the Android Version information based on the position
         Contact currentVersion = contactList.get(position);
@@ -46,6 +48,10 @@ public class CustomAdapter extends ArrayAdapter {
         tvName.setText(currentVersion.getName());
         tvCountryCode.setText(("+" + currentVersion.getCountryCode()));
         tvPhoneNum.setText((currentVersion.getPhoneNum() + ""));
+
+        if (currentVersion.getGender() == 'M'){
+            imageView.setImageResource(R.drawable.male);
+        }
 
         return rowView;
     }
